@@ -1,3 +1,6 @@
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
+
 namespace PresentationLayer
 {
     public class Program
@@ -8,7 +11,12 @@ namespace PresentationLayer
 
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-            var app = builder.Build();
+            ///////////////////////////////////////////
+            builder.Services.AddDbContext<Context>();
+            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+			///////////////////////////////////////////
+
+			var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
             {
@@ -21,7 +29,11 @@ namespace PresentationLayer
 
             app.UseRouting();
 
-            app.UseAuthorization();
+			///////////////////////////////////////////
+			app.UseAuthentication();
+			///////////////////////////////////////////
+
+			app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
