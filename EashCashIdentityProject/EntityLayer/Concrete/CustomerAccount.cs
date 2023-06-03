@@ -17,5 +17,9 @@ namespace EntityLayer.Concrete
         public decimal CustomerAccountBalance { get; set; }
 
         public string? BankBranch { get; set; }
+
+        public int AppUserID { get; set; }
+
+        public AppUser AppUser { get; set; }
     }
 }
