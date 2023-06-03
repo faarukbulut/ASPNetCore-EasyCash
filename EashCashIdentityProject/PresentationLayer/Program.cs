@@ -1,5 +1,6 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
+using PresentationLayer.Models;
 
 namespace PresentationLayer
 {
@@ -13,7 +14,7 @@ namespace PresentationLayer
 
             ///////////////////////////////////////////
             builder.Services.AddDbContext<Context>();
-            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
 			///////////////////////////////////////////
 
 			var app = builder.Build();
