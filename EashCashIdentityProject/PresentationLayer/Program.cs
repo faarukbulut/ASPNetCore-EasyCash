@@ -1,4 +1,8 @@
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using PresentationLayer.Models;
 
@@ -15,6 +19,10 @@ namespace PresentationLayer
             ///////////////////////////////////////////
             builder.Services.AddDbContext<Context>();
             builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
+
+            builder.Services.AddScoped<ICustomerAccountProcessDal, EFCustomerAccountProcessDal>();
+            builder.Services.AddScoped<ICustomerAccountProcessService, CustomerAccountProcessManager>();
+
 			///////////////////////////////////////////
 
 			var app = builder.Build();
