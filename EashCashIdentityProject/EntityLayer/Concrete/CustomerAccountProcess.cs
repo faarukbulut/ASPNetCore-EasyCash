@@ -23,5 +23,7 @@ namespace EntityLayer.Concrete
         public CustomerAccount SenderCustomer { get; set; }
 
         public CustomerAccount ReceiverCustomer { get; set; }
+
+        public string? Description { get; set; }
     }
 }
