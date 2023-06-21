@@ -19,8 +19,11 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(String mycurrency)
         {
+            ViewBag.currency = mycurrency;
+
+
             return View();
         }
 
@@ -38,6 +41,7 @@ namespace PresentationLayer.Controllers
             values.ProcessType = "Havale";
             values.ReceiverID = receiverAccountNumberID;
             values.Amount = p.Amount;
+            values.Description = p.Description;
 
             _customerAccountProcessService.TInsert(values);
 
