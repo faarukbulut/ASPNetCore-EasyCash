@@ -22,7 +22,7 @@ namespace PresentationLayer.Controllers
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                ViewBag.UsdToTry = body;
+                ViewBag.UsdToTry = body.Substring(0, 7);
             }
             #endregion
 
@@ -42,7 +42,7 @@ namespace PresentationLayer.Controllers
             {
                 response2.EnsureSuccessStatusCode();
                 var body2 = await response2.Content.ReadAsStringAsync();
-                ViewBag.EurToTry = body2;
+                ViewBag.EurToTry = body2.Substring(0, 7);
             }
             #endregion
 
@@ -62,7 +62,7 @@ namespace PresentationLayer.Controllers
             {
                 response3.EnsureSuccessStatusCode();
                 var body3 = await response3.Content.ReadAsStringAsync();
-                ViewBag.GbpToTry = body3;
+                ViewBag.GbpToTry = body3.Substring(0, 7);
             }
             #endregion
 
