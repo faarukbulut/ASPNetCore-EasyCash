@@ -1,3 +1,5 @@
+
+
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
@@ -23,9 +25,11 @@ namespace PresentationLayer
             builder.Services.AddScoped<ICustomerAccountProcessDal, EFCustomerAccountProcessDal>();
             builder.Services.AddScoped<ICustomerAccountProcessService, CustomerAccountProcessManager>();
 
-			///////////////////////////////////////////
+            builder.Services.AddScoped<ICustomerAccountDal, EFCustomerAccountDal>();
+            builder.Services.AddScoped<ICostumerAccountService, CustomerAccountManager>();
+            ///////////////////////////////////////////
 
-			var app = builder.Build();
+            var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
             {

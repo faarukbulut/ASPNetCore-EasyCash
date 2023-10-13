@@ -16,7 +16,7 @@ namespace DataAccessLayer.EntityFramework
         public List<CustomerAccountProcess> MyLastProcess(int id)
         {
             using var context = new Context();
-            var values = context.CustomerAccountProcesses.Include(y => y.SenderCustomer).Where(x => x.ReceiverID == id || x.SenderID == id).ToList();
+            var values = context.CustomerAccountProcesses.Include(y => y.SenderCustomer).Include(w => w.ReceiverCustomer).ThenInclude(z => z.AppUser).Where(x => x.ReceiverID == id || x.SenderID == id).ToList();
             return values;
         }
     }

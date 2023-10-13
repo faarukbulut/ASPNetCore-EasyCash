@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface ICostumerAccountService : IGenericService<CustomerAccount>
     {
+        List<CustomerAccount> TGetCustomerAccountsList(int id);
     }
 }
